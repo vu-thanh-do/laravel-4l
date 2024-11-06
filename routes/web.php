@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ProductController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -12,10 +13,12 @@ use Illuminate\Support\Facades\Route;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
-
 Route::get('/', function () {
-    return view('client.index');
+    $products = App\Models\Product::all(); // Lấy tất cả sản phẩm
+    return view('client.index', compact('products'));
 });
+Route::get('/product/{id}', [ProductController::class, 'show'])->name('product.show');
+
 
 Route::get('shop-single', function () {
     return view('client.shop-single');
@@ -68,3 +71,5 @@ Route::get('orders', function () {
 Route::get('order-detail', function () {
     return view('admin.order-detail');
 });
+// Route::get('/featured-products', [ProductController::class, 'showProducts']);
+Route::get('/featured-products', [ProductController::class, 'seeMore']);

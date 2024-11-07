@@ -34,18 +34,19 @@
 </div> -->
 <div class="containerV2">
     <div class="left-column">
-        <img alt="Product Image 1" height="100" src="https://storage.googleapis.com/a1aa/image/4ab1OkUHfC1KFKjKrubmFHYfSZK1ELrYFPkkfIMydSBjalcnA.jpg" width="100" />
-        <img alt="Product Image 2" height="100" src="https://storage.googleapis.com/a1aa/image/A7oG3NjvfU1vGimFUVhctPm3PyBcRfmeVSo5UfSJOA860K5OB.jpg" width="100" />
-        <img alt="Product Image 3" height="100" src="https://storage.googleapis.com/a1aa/image/PT52afvIB02uYCvwDofofesYuPkuyqeZGlBfEbCa9AXBUrk7E.jpg" width="100" />
-        <img alt="Product Image 4" height="100" src="https://storage.googleapis.com/a1aa/image/SdI4DHaDrN5ZINEEa8eR7YSP4a5GY6BLY2gkLsW7J8HqWJ3JA.jpg" width="100" />
-        <img alt="Product Image 5" height="100" src="https://storage.googleapis.com/a1aa/image/pPS5hGf8RLzbXSw8P3s68jpBndnBuBqRxHfpuHqNHGelalcnA.jpg" width="100" />
+    @php
+                    $images = is_string($product->images) ? json_decode($product->images, true) : $product->images;
+                @endphp
+                @foreach ($images as $image)
+                    <img  alt="{{ $product->name }}" height="100" src="{{ $image }}" width="100" />
+                @endforeach
     </div>
     <div class="right-column">
         <div class="product-title">
-            SL-03-N
+        {{ $product->name }}
         </div>
         <div class="product-code">
-            Mã: N/A | 136 Đã bán
+            Danh Mục : {{ $product->category->name }} | 136 Đã bán
         </div>
         <div class="product-price">
             <del>
@@ -55,28 +56,13 @@
         </div>
         <div class="size-selection">
             <span>
-                38
-            </span>
-            <span>
-                39
-            </span>
-            <span>
-                40
-            </span>
-            <span>
-                41
-            </span>
-            <span>
-                42
-            </span>
-            <span>
-                43
+             {{ $product->size }}
             </span>
         </div>
         <div class="product-details">
             <ul>
                 <li>
-                    Màu sắc: Màu đen
+                    Màu sắc: {{ $product->color }}
                 </li>
                 <li>
                     Chất liệu: Da bò cao cấp

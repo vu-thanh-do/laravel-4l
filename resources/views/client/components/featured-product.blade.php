@@ -29,7 +29,7 @@
             @endforeach
         </div>
         <div  style="display:flex; justify-content:center">
-            <button class="btn btn-success">Xem Thêm</button>
+        <a href="{{ route('featured-products') }}">   <button class="btn btn-success">Xem Thêm</button></a>
         </div>
     </div>
 </div>

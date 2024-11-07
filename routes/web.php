@@ -72,4 +72,5 @@ Route::get('order-detail', function () {
     return view('admin.order-detail');
 });
 // Route::get('/featured-products', [ProductController::class, 'showProducts']);
-Route::get('/featured-products', [ProductController::class, 'seeMore']);
+Route::get('/featured-products', [ProductController::class, 'seeMore'])->name('featured-products');
+Route::get('/category/{id}/products', [ProductController::class, 'getProductByCategory'])->name('category.products');
